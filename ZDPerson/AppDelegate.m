@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ZDMianViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    ZDMianViewController *mainVC = [[ZDMianViewController alloc] init];
+    
+    UINavigationController *NC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    
+    self.window.rootViewController = NC;
+    
     return YES;
 }
 

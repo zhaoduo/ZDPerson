@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ZDMianViewController.h
 //  ZDPerson
 //
 //  Created by zdd. on 2017/8/26.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ZDMianViewController : UIViewController
 
 @end
-
