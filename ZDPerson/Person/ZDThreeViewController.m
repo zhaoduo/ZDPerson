@@ -23,9 +23,16 @@
 }
 -(void)setContentOffset:(CGFloat)Offset withTag:(NSInteger)tag{
     if (tag != self.tableView.tag) {
-        [self.tableView setContentOffset:CGPointMake(0, Offset) animated:YES];
+        
+        CGFloat currentOffetY = self.tableView.contentOffset.y;
+        
         if (Offset > HEADERVIEW_HEIGHT - 64 - 44) {
-            [self.tableView setContentOffset:CGPointMake(0, HEADERVIEW_HEIGHT - 64 - 44) animated:YES];
+            
+            if (currentOffetY < HEADERVIEW_HEIGHT - 64 - 44) {
+                
+                [self.tableView setContentOffset:CGPointMake(0, HEADERVIEW_HEIGHT - 64 - 44) animated:YES];
+            }
+            
         }
         if (Offset <= 0) {
             [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
