@@ -48,34 +48,24 @@ static NSString *identifer = @"CELL";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     self.view.backgroundColor = [UIColor whiteColor];
     
     _vc1 = [[ZDFirstViewController alloc] init];
-    
     _vc1.scrollViewDelegate = self;
     
     _vc2 = [[ZDSecondViewController alloc] init];
-    
     _vc2.scrollViewDelegate = self;
-    
+
     _vc3 = [[ZDThreeViewController alloc] init];
-    
     _vc3.scrollViewDelegate =self;
-    
     
     _selectedTag = _vc1.tableView.tag;
     
     [self addChildViewController:_vc1];
-    
     [self addChildViewController:_vc2];
-    
     [self addChildViewController:_vc3];
-    
     [self.view addSubview:self.collectionView];
-    
     [self.view addSubview:self.headerView];
-    
     [self.view addSubview:self.navigationView];
     
 }
@@ -96,13 +86,11 @@ static NSString *identifer = @"CELL";
     
     CGFloat offetX = scrollView.contentOffset.x;
     if (scrollView == self.collectionView) {
-        
         NSLog(@"__________拖拽结束________%f",offetX);
         
         if (offetX == 0) {
             
             self.headerView.selectIndex = 0;
-            
             
         }else if(offetX == SCREEN_WIDTH){
             
@@ -111,14 +99,12 @@ static NSString *identifer = @"CELL";
         }else{
             self.headerView.selectIndex = 2;
         }
-        
         _selectedTag = self.headerView.selectIndex + 1000;
     }
 }
 
 #pragma mark - ZDTableViewDelegate
 - (void)tableViewDidScroll:(UIScrollView *)scrollView{
-    
     if (scrollView.tag != _selectedTag) {
         return;
     }
@@ -127,21 +113,22 @@ static NSString *identifer = @"CELL";
     NSLog(@"_________偏移量——————————%f******  -%ld",offetY,scrollView.tag);
     
     [_vc1 setContentOffset:offetY withTag:scrollView.tag];
-    
     [_vc2 setContentOffset:offetY withTag:scrollView.tag];
-    
     [_vc3 setContentOffset:offetY withTag:scrollView.tag];
     
-    
     CGFloat tempHeight = HEADERVIEW_HEIGHT - 64 - 44;
-    
     //上移
-    if(offetY <= tempHeight){
+    if(offetY < tempHeight){
         CGRect frame = self.headerView.frame;
         CGFloat y = -scrollView.contentOffset.y;
         frame.origin.y = y;
         self.headerView.frame = frame;
+    }else{
         
+        CGRect frame = self.headerView.frame;
+        CGFloat y = -tempHeight;
+        frame.origin.y = y;
+        self.headerView.frame = frame;
         
     }
     if(offetY >= tempHeight){
@@ -214,6 +201,9 @@ static NSString *identifer = @"CELL";
     if (!_headerView) {
         _headerView = [[ZDPersonHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, HEADERVIEW_HEIGHT)];
         _headerView.delegate = self;
+        
+        //获取穿透view的数量
+        _headerView.passthroughViews = [NSArray arrayWithObject:self.collectionView];
     }
     return _headerView;
 }
@@ -227,7 +217,6 @@ static NSString *identifer = @"CELL";
         
         UINavigationItem *item = [[UINavigationItem alloc] init];
         item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
-        
         item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
         
         _navigationView.tintColor = [UIColor whiteColor];
