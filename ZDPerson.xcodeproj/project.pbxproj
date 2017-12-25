@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650B9EEF1FF0A6D600E0504A /* zd.gif in Resources */ = {isa = PBXBuildFile; fileRef = 650B9EEE1FF0A6D600E0504A /* zd.gif */; };
 		65FF37C21F512FC300ED59A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF37C11F512FC300ED59A4 /* main.m */; };
 		65FF37C51F512FC300ED59A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF37C41F512FC300ED59A4 /* AppDelegate.m */; };
 		65FF37CB1F512FC300ED59A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FF37C91F512FC300ED59A4 /* Main.storyboard */; };
@@ -23,7 +24,6 @@
 		65FF38091F52F51400ED59A4 /* ZDPersonHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF38081F52F51400ED59A4 /* ZDPersonHeaderView.m */; };
 		65FF380C1F52F80400ED59A4 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF380B1F52F80400ED59A4 /* UIView+Extension.m */; };
 		65FF380F1F52F90E00ED59A4 /* ZDSelectMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF380E1F52F90E00ED59A4 /* ZDSelectMenuView.m */; };
-		65FF38141F531F9500ED59A4 /* person.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65FF38131F531F9500ED59A4 /* person.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650B9EEE1FF0A6D600E0504A /* zd.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zd.gif; sourceTree = "<group>"; };
 		65FF37BD1F512FC300ED59A4 /* ZDPerson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDPerson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FF37C11F512FC300ED59A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65FF37C31F512FC300ED59A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		65FF380B1F52F80400ED59A4 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		65FF380D1F52F90E00ED59A4 /* ZDSelectMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDSelectMenuView.h; sourceTree = "<group>"; };
 		65FF380E1F52F90E00ED59A4 /* ZDSelectMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDSelectMenuView.m; sourceTree = "<group>"; };
-		65FF38131F531F9500ED59A4 /* person.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = person.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +196,7 @@
 		65FF38121F531F9500ED59A4 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				65FF38131F531F9500ED59A4 /* person.gif */,
+				650B9EEE1FF0A6D600E0504A /* zd.gif */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -268,6 +268,7 @@
 				TargetAttributes = {
 					65FF37BC1F512FC300ED59A4 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = GCNZ68XG9E;
 						ProvisioningStyle = Automatic;
 					};
 					65FF37D51F512FC300ED59A4 = {
@@ -308,7 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FF37D01F512FC300ED59A4 /* LaunchScreen.storyboard in Resources */,
-				65FF38141F531F9500ED59A4 /* person.gif in Resources */,
+				650B9EEF1FF0A6D600E0504A /* zd.gif in Resources */,
 				65FF37CD1F512FC300ED59A4 /* Assets.xcassets in Resources */,
 				65FF37CB1F512FC300ED59A4 /* Main.storyboard in Resources */,
 			);
@@ -500,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GCNZ68XG9E;
 				INFOPLIST_FILE = ZDPerson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ZDPerson";
@@ -511,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GCNZ68XG9E;
 				INFOPLIST_FILE = ZDPerson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ZDPerson";
@@ -583,6 +586,7 @@
 				65FF37EC1F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65FF37ED1F512FC300ED59A4 /* Build configuration list for PBXNativeTarget "ZDPersonTests" */ = {
 			isa = XCConfigurationList;
@@ -591,6 +595,7 @@
 				65FF37EF1F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65FF37F01F512FC300ED59A4 /* Build configuration list for PBXNativeTarget "ZDPersonUITests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +604,7 @@
 				65FF37F21F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
