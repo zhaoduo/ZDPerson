@@ -268,7 +268,6 @@
 				TargetAttributes = {
 					65FF37BC1F512FC300ED59A4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = GCNZ68XG9E;
 						ProvisioningStyle = Automatic;
 					};
 					65FF37D51F512FC300ED59A4 = {
@@ -501,7 +500,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GCNZ68XG9E;
 				INFOPLIST_FILE = ZDPerson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ZDPerson";
@@ -513,7 +511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GCNZ68XG9E;
 				INFOPLIST_FILE = ZDPerson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ZDPerson";
@@ -586,7 +583,6 @@
 				65FF37EC1F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		65FF37ED1F512FC300ED59A4 /* Build configuration list for PBXNativeTarget "ZDPersonTests" */ = {
 			isa = XCConfigurationList;
@@ -595,7 +591,6 @@
 				65FF37EF1F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		65FF37F01F512FC300ED59A4 /* Build configuration list for PBXNativeTarget "ZDPersonUITests" */ = {
 			isa = XCConfigurationList;
@@ -604,7 +599,6 @@
 				65FF37F21F512FC300ED59A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
