@@ -141,9 +141,15 @@ static NSString *identifer = @"CELL";
         CGFloat y = -scrollView.contentOffset.y;
         frame.origin.y = y;
         self.headerView.frame = frame;
+    }else{
         
+        CGRect frame = self.headerView.frame;
+        CGFloat y = -tempHeight;
+        frame.origin.y = y;
+        self.headerView.frame = frame;
         
     }
+    
     if(offetY >= tempHeight){
         
         self.bgImageView.hidden = NO;
@@ -214,6 +220,8 @@ static NSString *identifer = @"CELL";
     if (!_headerView) {
         _headerView = [[ZDPersonHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, HEADERVIEW_HEIGHT)];
         _headerView.delegate = self;
+        //获取穿透view的数量
+        _headerView.passthroughViews = [NSArray arrayWithObject:self.collectionView];
     }
     return _headerView;
 }

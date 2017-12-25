@@ -22,15 +22,11 @@
 
 @property (nonatomic, weak)id <ZDPersonHeaderViewDelegate> delegate;
 
-//@property (nonatomic, strong)DMCommunity            *community;
-
 @property (nonatomic, strong)UIImageView            *backgroundImageView;
 
-@property (nonatomic, strong)UIImageView            *iconImageView;
 
 @property (nonatomic, assign)NSInteger              selectIndex; //菜单下表
 
-
-//-1未关注 0正常关注 1绑定社区 2社区黑名单 3管理员
-@property (nonatomic, assign)NSInteger              isJoin;
+//穿透view的数量
+@property (nonatomic, copy)NSArray                    *passthroughViews;
 @end

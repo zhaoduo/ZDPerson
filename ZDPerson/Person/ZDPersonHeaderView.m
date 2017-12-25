@@ -8,6 +8,9 @@
 
 #import "ZDPersonHeaderView.h"
 @interface ZDPersonHeaderView ()
+{
+    BOOL testHits;
+}
 
 @property (nonatomic, strong)UILabel            *nameLabel;
 
@@ -42,6 +45,47 @@
     
     [self.selectMenuView switchSelectButtonWithIndex:selectIndex];
 }
+//重写view的touch事件
+-(UIView*) hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    if(testHits){
+        return nil;
+    }
+    
+    if(!self.passthroughViews
+       || (self.passthroughViews && self.passthroughViews.count == 0)){
+        return self;
+    } else {
+        
+        UIView *hitView = [super hitTest:point withEvent:event];
+        
+        if (hitView == self) {
+            //Test whether any of the passthrough views would handle this touch
+            testHits = YES;
+            CGPoint superPoint = [self.superview convertPoint:point fromView:self];
+            UIView *superHitView = [self.superview hitTest:superPoint withEvent:event];
+            testHits = NO;
+            
+            if ([self isPassthroughView:superHitView]) {
+                hitView = superHitView;
+            }
+        }
+        return hitView;
+    }
+}
+//是否获取到当前view的穿透视图
+- (BOOL)isPassthroughView:(UIView *)view {
+    
+    if (view == nil) {
+        return NO;
+    }
+    
+    if ([self.passthroughViews containsObject:view]) {
+        return YES;
+    }
+    
+    return [self isPassthroughView:view.superview];
+}
+
 #pragma mark - Setter and getter
 -(UIImageView *)backgroundImageView{
     if (!_backgroundImageView) {
@@ -55,22 +99,9 @@
     return _backgroundImageView ;
 }
 
-- (UIImageView *)iconImageView{
-    if (!_iconImageView) {
-        
-        CGFloat leftMargin = 20 ;
-        CGFloat topMargin = 15;
-        
-        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(leftMargin , topMargin, 70, 70)];
-        _iconImageView.backgroundColor = [UIColor redColor];
-        _iconImageView.layer.cornerRadius = 2;
-        _iconImageView.layer.masksToBounds = YES;
-    }
-    return _iconImageView;
-}
 -(UILabel *)nameLabel{
     if (!_nameLabel) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.iconImageView.maxX + 20, self.iconImageView.y, SCREEN_WIDTH - self.iconImageView.maxX - 20 - 20, 20)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 20)];
         _nameLabel.font = [UIFont systemFontOfSize:20.0f];
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.textAlignment = NSTextAlignmentLeft;
