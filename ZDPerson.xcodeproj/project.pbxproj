@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		650B9EEF1FF0A6D600E0504A /* zd.gif in Resources */ = {isa = PBXBuildFile; fileRef = 650B9EEE1FF0A6D600E0504A /* zd.gif */; };
+		65D82F5D20C3E346003A83ED /* zd.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65D82F5C20C3E346003A83ED /* zd.gif */; };
 		65FF37C21F512FC300ED59A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF37C11F512FC300ED59A4 /* main.m */; };
 		65FF37C51F512FC300ED59A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FF37C41F512FC300ED59A4 /* AppDelegate.m */; };
 		65FF37CB1F512FC300ED59A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FF37C91F512FC300ED59A4 /* Main.storyboard */; };
@@ -44,7 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		650B9EEE1FF0A6D600E0504A /* zd.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zd.gif; sourceTree = "<group>"; };
+		65D82F5C20C3E346003A83ED /* zd.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zd.gif; sourceTree = "<group>"; };
 		65FF37BD1F512FC300ED59A4 /* ZDPerson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDPerson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FF37C11F512FC300ED59A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65FF37C31F512FC300ED59A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		65FF38121F531F9500ED59A4 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				650B9EEE1FF0A6D600E0504A /* zd.gif */,
+				65D82F5C20C3E346003A83ED /* zd.gif */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -308,8 +308,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D82F5D20C3E346003A83ED /* zd.gif in Resources */,
 				65FF37D01F512FC300ED59A4 /* LaunchScreen.storyboard in Resources */,
-				650B9EEF1FF0A6D600E0504A /* zd.gif in Resources */,
 				65FF37CD1F512FC300ED59A4 /* Assets.xcassets in Resources */,
 				65FF37CB1F512FC300ED59A4 /* Main.storyboard in Resources */,
 			);
