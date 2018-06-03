@@ -19,28 +19,10 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
     self.tableView.tag = 1000;
     
 }
--(void)setContentOffset:(CGFloat)Offset withTag:(NSInteger)tag{
-    if (tag != self.tableView.tag) {
-        
-        CGFloat currentOffetY = self.tableView.contentOffset.y;
-        
-        if (Offset > HEADERVIEW_HEIGHT - 64 - 44) {
-            
-            if (currentOffetY < HEADERVIEW_HEIGHT - 64 - 44) {
-                
-                [self.tableView setContentOffset:CGPointMake(0, HEADERVIEW_HEIGHT - 64 - 44) animated:YES];
-            }
-            
-        }
-        if (Offset <= 0) {
-            [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-        }
-    }
-}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 44;
@@ -67,15 +49,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

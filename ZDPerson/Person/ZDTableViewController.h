@@ -18,6 +18,6 @@
 
 @property (nonatomic,weak)id <ZDTableViewDelegate>  scrollViewDelegate;
 
-
 - (void)setContentOffset:(CGFloat)Offset withTag:(NSInteger)tag;
+
 @end

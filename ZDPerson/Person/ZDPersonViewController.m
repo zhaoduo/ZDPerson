@@ -52,30 +52,23 @@ static NSString *identifer = @"CELL";
     self.view.backgroundColor = [UIColor whiteColor];
     
     _vc1 = [[ZDFirstViewController alloc] init];
-    
     _vc1.scrollViewDelegate = self;
     
     _vc2 = [[ZDSecondViewController alloc] init];
-    
     _vc2.scrollViewDelegate = self;
     
     _vc3 = [[ZDThreeViewController alloc] init];
-    
     _vc3.scrollViewDelegate =self;
     
     
     _selectedTag = _vc1.tableView.tag;
     
     [self addChildViewController:_vc1];
-    
     [self addChildViewController:_vc2];
-    
     [self addChildViewController:_vc3];
     
     [self.view addSubview:self.collectionView];
-    
     [self.view addSubview:self.headerView];
-    
     [self.view addSubview:self.navigationView];
     
 }
@@ -97,15 +90,10 @@ static NSString *identifer = @"CELL";
     CGFloat offetX = scrollView.contentOffset.x;
     if (scrollView == self.collectionView) {
         
-        NSLog(@"__________拖拽结束________%f",offetX);
-        
         if (offetX == 0) {
-            
             self.headerView.selectIndex = 0;
             
-            
         }else if(offetX == SCREEN_WIDTH){
-            
             self.headerView.selectIndex = 1;
             
         }else{
@@ -122,18 +110,14 @@ static NSString *identifer = @"CELL";
     if (scrollView.tag != _selectedTag) {
         return;
     }
-    
     CGFloat offetY = scrollView.contentOffset.y;
-    NSLog(@"_________偏移量——————————%f******  -%ld",offetY,scrollView.tag);
+//    NSLog(@"_________偏移量——————————%f******  -%ld",offetY,scrollView.tag);
     
     [_vc1 setContentOffset:offetY withTag:scrollView.tag];
-    
     [_vc2 setContentOffset:offetY withTag:scrollView.tag];
-    
     [_vc3 setContentOffset:offetY withTag:scrollView.tag];
     
-    
-    CGFloat tempHeight = HEADERVIEW_HEIGHT - 64 - 44;
+    CGFloat tempHeight = HEADERVIEW_HEIGHT - IS_NavigationBarHeight - HEADERVIEW_MENU_HEIGHT;
     
     //上移
     if(offetY <= tempHeight){
@@ -141,25 +125,23 @@ static NSString *identifer = @"CELL";
         CGFloat y = -scrollView.contentOffset.y;
         frame.origin.y = y;
         self.headerView.frame = frame;
+        
+        UIColor * color = [UIColor brownColor];
+        if (offetY > 0) {
+            CGFloat alpha = MIN(1, 1 - ((tempHeight - offetY) / IS_NavigationBarHeight));
+            self.bgImageView.backgroundColor = [color colorWithAlphaComponent:alpha];
+            _titleLabel.alpha = alpha;
+        }else{
+            self.bgImageView.backgroundColor = [color colorWithAlphaComponent:0];
+            _titleLabel.alpha = 0;
+        }
+        
     }else{
         
         CGRect frame = self.headerView.frame;
         CGFloat y = -tempHeight;
         frame.origin.y = y;
         self.headerView.frame = frame;
-        
-    }
-    
-    if(offetY >= tempHeight){
-        
-        self.bgImageView.hidden = NO;
-        _titleLabel.text = @"麦卡特尼";
-        
-    }else{
-        
-        self.bgImageView.hidden = YES;
-        _titleLabel.text = @"";
-        
     }
     
     //小于0时下拉放大
@@ -168,7 +150,6 @@ static NSString *identifer = @"CELL";
         CGRect rect = self.headerView.backgroundImageView.frame;;
         rect.origin.y = offetY;
         rect.size.height = -offetY + HEADERVIEW_HEIGHT;
-        
         self.headerView.backgroundImageView.frame = rect;
     }
 
@@ -203,10 +184,10 @@ static NSString *identifer = @"CELL";
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - IS_SafeAreaHeight) collectionViewLayout:layout];
 
         _collectionView.backgroundColor = [UIColor whiteColor];
-        layout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+        layout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - IS_SafeAreaHeight);
         _collectionView.pagingEnabled = YES;
         _collectionView.delegate = self;
         _collectionView.dataSource =self;
@@ -227,7 +208,7 @@ static NSString *identifer = @"CELL";
 }
 -(UINavigationBar *)navigationView{
     if (!_navigationView) {
-        _navigationView = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+        _navigationView = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, IS_NavigationBarHeight)];
         
         [_navigationView addSubview:self.bgImageView];
         [_navigationView setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -240,11 +221,11 @@ static NSString *identifer = @"CELL";
         
         _navigationView.tintColor = [UIColor whiteColor];
         //标题
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 20, SCREEN_WIDTH - 40 * 2, 44)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, IS_StatusBarHeight, SCREEN_WIDTH - 40 * 2, 44)];
         titleLabel.font = [UIFont systemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor whiteColor];
-        
+        titleLabel.text = @"麦卡特尼";
         _titleLabel = titleLabel;
         [_navigationView addSubview:titleLabel];
         _navigationView.items = @[item];
@@ -253,9 +234,7 @@ static NSString *identifer = @"CELL";
 }
 -(UIImageView *)bgImageView{
     if (!_bgImageView) {
-        _bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-        _bgImageView.backgroundColor = [UIColor blueColor];
-        _bgImageView.hidden = YES;
+        _bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, IS_NavigationBarHeight)];
     }
     return _bgImageView;
 }
